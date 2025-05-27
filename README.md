@@ -1,6 +1,6 @@
 # ResgateTech - Sistema Inteligente de Gestão de Recursos em Desastres
 
-![ResgateTech Logo](img/favicon.ico)
+
 
 ## 📋 Sobre o Projeto
 
