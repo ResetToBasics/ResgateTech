@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interativo - ResgateTech</title>
+    <link rel="stylesheet" href="css/mapa.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    <!-- Leaflet Routing Machine CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    <!-- Leaflet Routing Machine JavaScript -->
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shield-alt"></i>
+                ResgateTech
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="mapa.html">Mapa Interativo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contato.html">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Map Container -->
+    <div class="map-container">
+        <!-- Mobile Sidebar Toggle -->
+        <button class="mobile-sidebar-toggle" id="mobileSidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Map Controls Sidebar -->
+        <div class="map-sidebar" id="mapSidebar">
+            <div class="sidebar-header">
+                <h5>
+                    <i class="fas fa-map-marked-alt me-2"></i>
+                    Controles do Mapa
+                    <button id="toggleMapSidebar" class="btn btn-sm">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </h5>
+            </div>
+
+            <!-- Disaster Selection -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-exclamation-triangle"></i>Desastre Ativo</h6>
+                <select class="form-select" id="disasterSelect">
+                    <option selected>Enchente - Região Sul</option>
+                    <option>Deslizamento - Serra do Mar</option>
+                    <option>Incêndio - Área de Preservação</option>
+                    <option>Terremoto - Região Nordeste</option>
+                </select>
+                <div class="mt-2">
+                    <small class="text-muted">
+                        <i class="fas fa-clock me-1"></i>
+                        Tempo decorrido: <span id="disasterTime">48:32:15</span>
+                    </small>
+                </div>
+            </div>
+
+            <!-- Layer Controls -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-layers"></i>Camadas do Mapa</h6>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="layerAffectedAreas" checked>
+                    <label class="form-check-label" for="layerAffectedAreas">
+                        <i class="fas fa-map-marked-alt me-2 text-danger"></i>Áreas Afetadas
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="layerRiskZones" checked>
+                    <label class="form-check-label" for="layerRiskZones">
+                        <i class="fas fa-exclamation-triangle me-2 text-warning"></i>Zonas de Risco
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="layerTeams" checked>
+                    <label class="form-check-label" for="layerTeams">
+                        <i class="fas fa-users me-2 text-primary"></i>Equipes
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="layerResources" checked>
+                    <label class="form-check-label" for="layerResources">
+                        <i class="fas fa-boxes me-2 text-success"></i>Recursos
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="layerShelters" checked>
+                    <label class="form-check-label" for="layerShelters">
+                        <i class="fas fa-home me-2 text-info"></i>Abrigos
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="layerEvacRoutes" checked>
+                    <label class="form-check-label" for="layerEvacRoutes">
+                        <i class="fas fa-route me-2 text-secondary"></i>Rotas de Evacuação
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="layerSatellite">
+                    <label class="form-check-label" for="layerSatellite">
+                        <i class="fas fa-satellite me-2 text-dark"></i>Imagem de Satélite
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="layerWeather">
+                    <label class="form-check-label" for="layerWeather">
+                        <i class="fas fa-cloud-rain me-2 text-info"></i>Condições Meteorológicas
+                    </label>
+                </div>
+            </div>
+
+            <!-- Time Control -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-history"></i>Controle Temporal</h6>
+                <div class="d-flex align-items-center mb-3">
+                    <button class="btn btn-outline-secondary btn-sm me-2" id="playTimeControl">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <input type="range" class="form-range" id="timeSlider" min="0" max="100" value="100">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <small class="text-muted">Início (48h atrás)</small>
+                    <small class="text-muted">Atual</small>
+                </div>
+                <div class="mt-2">
+                    <small class="text-primary">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Visualize a evolução temporal do desastre
+                    </small>
+                </div>
+            </div>
+
+            <!-- Resource Filter -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-filter"></i>Filtrar Recursos</h6>
+                <div class="btn-group w-100 mb-2" role="group">
+                    <input type="radio" class="btn-check" name="resourceType" id="allResources" checked>
+                    <label class="btn btn-outline-secondary btn-sm" for="allResources">Todos</label>
+                    
+                    <input type="radio" class="btn-check" name="resourceType" id="medicalResources">
+                    <label class="btn btn-outline-secondary btn-sm" for="medicalResources">Médicos</label>
+                </div>
+                <div class="btn-group w-100 mb-2" role="group">
+                    <input type="radio" class="btn-check" name="resourceType" id="foodResources">
+                    <label class="btn btn-outline-secondary btn-sm" for="foodResources">Alimentos</label>
+                    
+                    <input type="radio" class="btn-check" name="resourceType" id="shelterResources">
+                    <label class="btn btn-outline-secondary btn-sm" for="shelterResources">Abrigo</label>
+                </div>
+                <div class="btn-group w-100" role="group">
+                    <input type="radio" class="btn-check" name="resourceType" id="transportResources">
+                    <label class="btn btn-outline-secondary btn-sm" for="transportResources">Transporte</label>
+                    
+                    <input type="radio" class="btn-check" name="resourceType" id="otherResources">
+                    <label class="btn btn-outline-secondary btn-sm" for="otherResources">Outros</label>
+                </div>
+            </div>
+
+            <!-- Team Filter -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-users-cog"></i>Filtrar Equipes</h6>
+                <div class="btn-group w-100 mb-2" role="group">
+                    <input type="radio" class="btn-check" name="teamType" id="allTeams" checked>
+                    <label class="btn btn-outline-secondary btn-sm" for="allTeams">Todas</label>
+                    
+                    <input type="radio" class="btn-check" name="teamType" id="rescueTeams">
+                    <label class="btn btn-outline-secondary btn-sm" for="rescueTeams">Resgate</label>
+                </div>
+                <div class="btn-group w-100 mb-2" role="group">
+                    <input type="radio" class="btn-check" name="teamType" id="medicalTeams">
+                    <label class="btn btn-outline-secondary btn-sm" for="medicalTeams">Médicas</label>
+                    
+                    <input type="radio" class="btn-check" name="teamType" id="logisticsTeams">
+                    <label class="btn btn-outline-secondary btn-sm" for="logisticsTeams">Logística</label>
+                </div>
+                <div class="btn-group w-100" role="group">
+                    <input type="radio" class="btn-check" name="teamType" id="infrastructureTeams">
+                    <label class="btn btn-outline-secondary btn-sm" for="infrastructureTeams">Infraestrutura</label>
+                    
+                    <input type="radio" class="btn-check" name="teamType" id="emergencyTeams">
+                    <label class="btn btn-outline-secondary btn-sm" for="emergencyTeams">Emergência</label>
+                </div>
+            </div>
+
+            <!-- Route Planning -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-route"></i>Planejamento de Rota</h6>
+                <div class="mb-3">
+                    <label for="routeStart" class="form-label small fw-semibold">Origem</label>
+                    <select class="form-select form-select-sm" id="routeStart">
+                        <option selected>Centro de Comando</option>
+                        <option>Depósito Central</option>
+                        <option>Hospital Regional</option>
+                        <option>Abrigo Municipal</option>
+                        <option>Base de Operações</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="routeEnd" class="form-label small fw-semibold">Destino</label>
+                    <select class="form-select form-select-sm" id="routeEnd">
+                        <option>Centro da Cidade</option>
+                        <option>Bairro Esperança</option>
+                        <option selected>Hospital Regional</option>
+                        <option>Escola Municipal</option>
+                        <option>Área Industrial</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="routeType" class="form-label small fw-semibold">Tipo de Rota</label>
+                    <select class="form-select form-select-sm" id="routeType">
+                        <option selected>Mais Rápida</option>
+                        <option>Mais Segura</option>
+                        <option>Menor Distância</option>
+                        <option>Evitar Áreas de Risco</option>
+                    </select>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary btn-sm" id="calculateRouteBtn">
+                        <i class="fas fa-route me-2"></i>Calcular Rota
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm" id="clearRouteBtn">
+                        <i class="fas fa-times me-2"></i>Limpar Rota
+                    </button>
+                </div>
+            </div>
+
+            <!-- AI Predictions -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-brain"></i>Previsões IA</h6>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="small fw-semibold">Risco de Agravamento</span>
+                        <span class="badge bg-warning">Alto</span>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: 75%"></div>
+                    </div>
+                    <small class="text-muted">75% nas próximas 6 horas</small>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="small fw-semibold">Necessidade de Recursos</span>
+                        <span class="badge bg-info">Média</span>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-info" style="width: 60%"></div>
+                    </div>
+                    <small class="text-muted">+40% equipes médicas</small>
+                </div>
+                <button class="btn btn-outline-primary btn-sm w-100">
+                    <i class="fas fa-chart-line me-2"></i>Ver Análise Completa
+                </button>
+            </div>
+
+            <!-- Legend -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-list"></i>Legenda</h6>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #ef4444;"></span>
+                        <span>Área Crítica</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #f59e0b;"></span>
+                        <span>Área de Alto Risco</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #3b82f6;"></span>
+                        <span>Área de Médio Risco</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #10b981;"></span>
+                        <span>Área Segura</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon"><i class="fas fa-user-md text-white"></i></span>
+                        <span>Equipe Médica</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon"><i class="fas fa-life-ring text-white"></i></span>
+                        <span>Equipe de Resgate</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon"><i class="fas fa-home text-white"></i></span>
+                        <span>Abrigo/Refúgio</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon"><i class="fas fa-truck text-white"></i></span>
+                        <span>Recursos/Suprimentos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="sidebar-section loading">
+                <h6><i class="fas fa-tools"></i>Ações</h6>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success btn-sm" id="shareMapBtn">
+                        <i class="fas fa-share-alt me-2"></i>Compartilhar Mapa
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" id="exportMapBtn">
+                        <i class="fas fa-file-export me-2"></i>Exportar Dados
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm" id="fullscreenBtn">
+                        <i class="fas fa-expand me-2"></i>Tela Cheia
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Map Area -->
+        <div class="map-area" id="mapArea">
+            <!-- Real-time Indicator -->
+            <div class="real-time-indicator">
+                <div class="real-time-dot"></div>
+                <span class="fw-semibold">AO VIVO</span>
+                <small class="text-muted">|</small>
+                <small class="text-muted">Última atualização: agora</small>
+            </div>
+
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button class="map-control-btn" title="Zoom In" id="zoomInBtn">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="map-control-btn" title="Zoom Out" id="zoomOutBtn">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="map-control-btn" title="Centralizar" id="centerBtn">
+                    <i class="fas fa-crosshairs"></i>
+                </button>
+                <button class="map-control-btn" title="Minha Localização" id="locationBtn">
+                    <i class="fas fa-location-arrow"></i>
+                </button>
+            </div>
+
+            <!-- Map Placeholder with Interactive Elements -->
+            <div id="realMap" style="width: 100%; height: 100%; z-index: 1;"></div>
+            
+            <!-- Simulated Map Markers (will be replaced by Leaflet markers) -->
+            <div class="map-markers-data" style="display: none;">
+                <div class="map-marker-data" data-type="critical" data-lat="-23.5505" data-lng="-46.6333" data-info="centro-cidade">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="map-marker-data" data-type="warning" data-lat="-23.5605" data-lng="-46.6233" data-info="hospital">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="map-marker-data" data-type="success" data-lat="-23.5705" data-lng="-46.6533" data-info="abrigo">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="map-marker-data" data-type="info" data-lat="-23.5405" data-lng="-46.6133" data-info="equipe-resgate">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="map-marker-data" data-type="warning" data-lat="-23.5605" data-lng="-46.6433" data-info="recursos">
+                    <i class="fas fa-boxes"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Info Panel -->
+        <div class="map-info-panel" id="mapInfoPanel">
+            <div class="info-panel-header">
+                <h5 id="infoPanelTitle">Informações da Área</h5>
+                <button class="btn btn-sm btn-outline-light" id="closeInfoPanel">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="info-panel-body" id="infoPanelBody">
+                <div class="info-panel-section">
+                    <h6>Centro da Cidade</h6>
+                    <div class="info-status critical">Situação Crítica</div>
+                    <p><strong>Problema:</strong> Nível da água subindo rapidamente (1.5m acima do normal)</p>
+                    <p><strong>Pessoas afetadas:</strong> ~3,500 habitantes</p>
+                    <p><strong>Recursos no local:</strong> 2 equipes de resgate, suprimentos médicos limitados</p>
+                </div>
+                <div class="info-panel-section">
+                    <h6>Previsão e Tendências</h6>
+                    <p>Aumento previsto do nível da água em 30cm nas próximas 6 horas baseado em dados meteorológicos.</p>
+                    <div class="alert alert-danger p-2 mb-2">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Evacuação necessária</strong> para 1,200 pessoas
+                    </div>
+                    <div class="progress mb-2">
+                        <div class="progress-bar bg-danger" style="width: 85%"></div>
+                    </div>
+                    <small class="text-muted">Nível de urgência: 85%</small>
+                </div>
+                <div class="info-panel-section">
+                    <h6>Ações Recomendadas pela IA</h6>
+                    <ul class="action-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Evacuar população para Abrigo Municipal (2.3km)
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Enviar mais 2 equipes de resgate especializadas
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Reforçar barreira temporária no setor norte
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            Monitorar níveis de água a cada 30 minutos
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-panel-footer">
+                <button class="btn btn-primary btn-sm flex-fill" id="implementActionsBtn">
+                    <i class="fas fa-play me-2"></i>Implementar Ações
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" id="modifyPlanBtn">
+                    <i class="fas fa-edit me-2"></i>Modificar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/mapa.js"></script>
+</body>
+</html>

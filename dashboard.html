@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ResgateTech</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shield-alt"></i>
+                ResgateTech
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mapa.html">Mapa Interativo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contato.html">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <h5>Painel de Controle</h5>
+                <button id="toggleSidebar" class="btn btn-sm btn-outline-secondary">
+                    <span class="icon icon-bars"></span>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="#overview"><span class="icon icon-dashboard"></span> Visão Geral</a>
+                </li>
+                <li>
+                    <a href="#resources"><span class="icon">📦</span> Recursos</a>
+                </li>
+                <li>
+                    <a href="#teams"><span class="icon icon-users"></span> Equipes</a>
+                </li>
+                <li>
+                    <a href="#alerts"><span class="icon icon-bell"></span> Alertas</a>
+                </li>
+                <li>
+                    <a href="#analytics"><span class="icon icon-chart"></span> Análises</a>
+                </li>
+                <li>
+                    <a href="#predictions"><span class="icon">🧠</span> Previsões IA</a>
+                </li>
+                <li>
+                    <a href="#reports"><span class="icon">📄</span> Relatórios</a>
+                </li>
+                <li>
+                    <a href="#settings"><span class="icon icon-cog"></span> Configurações</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="disaster-status">
+                    <span class="status-indicator"></span>
+                    <span>Enchente - Região Sul</span>
+                </div>
+                <div class="disaster-timer">
+                    <span class="icon icon-time"></span> Tempo decorrido: <span id="disasterTimer">48:32:15</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <div>
+                    <h2>Dashboard Operacional</h2>
+                    <p class="text-muted mb-0">Monitoramento em tempo real da situação de emergência</p>
+                </div>
+                <div class="dashboard-actions">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button">
+                            <span class="icon icon-warning"></span>
+                            Enchente - Região Sul
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-secondary" title="Exportar Dados">
+                            <span class="icon icon-export"></span>
+                        </button>
+                        <button class="btn btn-outline-secondary" title="Atualizar">
+                            <span class="icon icon-sync"></span>
+                        </button>
+                        <button class="btn btn-outline-secondary" title="Configurações">
+                            <span class="icon icon-cog"></span>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary">
+                        <span class="icon icon-plus"></span>
+                        Novo Alerta
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Overview Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card loading">
+                        <div class="stat-card-body">
+                            <div class="stat-card-icon bg-primary">
+                                <span class="icon">🚨</span>
+                            </div>
+                            <div class="stat-card-info">
+                                <h5>Pessoas Afetadas</h5>
+                                <div class="stat-value" data-count="12458">12,458</div>
+                                <div class="stat-change increase">
+                                    <span>↗️ 5% nas últimas 24h</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card loading">
+                        <div class="stat-card-body">
+                            <div class="stat-card-icon bg-success">
+                                <span class="icon icon-medical"></span>
+                            </div>
+                            <div class="stat-card-info">
+                                <h5>Recursos Médicos</h5>
+                                <div class="stat-value">87%</div>
+                                <div class="stat-change decrease">
+                                    <span>↘️ 3% nas últimas 24h</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card loading">
+                        <div class="stat-card-body">
+                            <div class="stat-card-icon bg-warning">
+                                <span class="icon icon-team"></span>
+                            </div>
+                            <div class="stat-card-info">
+                                <h5>Equipes em Campo</h5>
+                                <div class="stat-value" data-count="42">42</div>
+                                <div class="stat-change increase">
+                                    <span>↗️ 8% nas últimas 24h</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card loading">
+                        <div class="stat-card-body">
+                            <div class="stat-card-icon bg-danger">
+                                <span class="icon icon-critical"></span>
+                            </div>
+                            <div class="stat-card-info">
+                                <h5>Alertas Críticos</h5>
+                                <div class="stat-value" data-count="7">7</div>
+                                <div class="stat-change no-change">
+                                    <span>➖ Sem alteração</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Content -->
+            <div class="row g-4">
+                <!-- Resource Allocation Chart -->
+                <div class="col-lg-8">
+                    <div class="dashboard-card loading">
+                        <div class="dashboard-card-header">
+                            <h4><span class="icon">📊</span>Alocação de Recursos por Região</h4>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-outline-secondary" title="Expandir">
+                                    <span>🔍</span>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" title="Filtrar">
+                                    <span>🔽</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-body">
+                            <div class="resource-allocation-chart">
+                                <div class="chart-placeholder">
+                                    <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                                    <h5 class="text-muted">Gráfico de Alocação de Recursos</h5>
+                                    <p class="text-muted">Visualização interativa da distribuição de recursos por região</p>
+                                    <div class="row mt-4">
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Centro da Cidade</span>
+                                                <span class="fw-bold">35%</span>
+                                            </div>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar bg-danger" style="width: 35%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Hospital Regional</span>
+                                                <span class="fw-bold">28%</span>
+                                            </div>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar bg-warning" style="width: 28%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Bairro Esperança</span>
+                                                <span class="fw-bold">22%</span>
+                                            </div>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar bg-info" style="width: 22%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Outros</span>
+                                                <span class="fw-bold">15%</span>
+                                            </div>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar bg-success" style="width: 15%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-footer">
+                            <button class="btn btn-primary btn-sm" id="optimizeResourcesBtn">
+                                <span>🪄</span> Otimizar com IA
+                            </button>
+                            <span class="text-muted small">
+                                <span>🔄</span> Última atualização: 2 minutos atrás
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Priority Areas -->
+                <div class="col-lg-4">
+                    <div class="dashboard-card loading">
+                        <div class="dashboard-card-header">
+                            <h4><span class="icon icon-critical"></span>Áreas Prioritárias</h4>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-outline-secondary" title="Atualizar">
+                                    <span class="icon icon-sync"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-body p-0">
+                            <ul class="priority-areas-list">
+                                <li class="priority-critical">
+                                    <div class="priority-info">
+                                        <h5><span class="icon icon-location text-danger"></span>Centro da Cidade</h5>
+                                        <p>Nível da água subindo rapidamente - 3,500 pessoas</p>
+                                    </div>
+                                    <div class="priority-actions">
+                                        <span class="priority-badge critical">Crítico</span>
+                                        <button class="btn btn-sm btn-outline-danger">Ação</button>
+                                    </div>
+                                </li>
+                                <li class="priority-high">
+                                    <div class="priority-info">
+                                        <h5><span class="icon icon-medical text-warning"></span>Hospital Regional</h5>
+                                        <p>Geradores com 4h de autonomia - 850 pacientes</p>
+                                    </div>
+                                    <div class="priority-actions">
+                                        <span class="priority-badge high">Alta</span>
+                                        <button class="btn btn-sm btn-outline-warning">Ação</button>
+                                    </div>
+                                </li>
+                                <li class="priority-medium">
+                                    <div class="priority-info">
+                                        <h5><span class="icon">🏠</span>Bairro Esperança</h5>
+                                        <p>Falta de água potável - 2,100 pessoas</p>
+                                    </div>
+                                    <div class="priority-actions">
+                                        <span class="priority-badge medium">Média</span>
+                                        <button class="btn btn-sm btn-outline-info">Ação</button>
+                                    </div>
+                                </li>
+                                <li class="priority-medium">
+                                    <div class="priority-info">
+                                        <h5><span class="icon">🏫</span>Escola Municipal</h5>
+                                        <p>Abrigo com superlotação - 1,200 abrigados</p>
+                                    </div>
+                                    <div class="priority-actions">
+                                        <span class="priority-badge medium">Média</span>
+                                        <button class="btn btn-sm btn-outline-info">Ação</button>
+                                    </div>
+                                </li>
+                                <li class="priority-low">
+                                    <div class="priority-info">
+                                        <h5><span class="icon">🛣️</span>Rodovia BR-101</h5>
+                                        <p>Bloqueio parcial - tráfego desviado</p>
+                                    </div>
+                                    <div class="priority-actions">
+                                        <span class="priority-badge low">Baixa</span>
+                                        <button class="btn btn-sm btn-outline-success">Ação</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dashboard-card-footer text-center">
+                            <a href="mapa.html" class="btn btn-outline-primary btn-sm">
+                                <span>🗺️</span> Ver no Mapa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Status -->
+                <div class="col-lg-6">
+                    <div class="dashboard-card loading">
+                        <div class="dashboard-card-header">
+                            <h4><span class="icon icon-users"></span>Status das Equipes</h4>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <span>🔽</span> Filtrar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Equipe</th>
+                                            <th>Tipo</th>
+                                            <th>Localização</th>
+                                            <th>Status</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="team-info">
+                                                    <div class="team-avatar">R1</div>
+                                                    <div>
+                                                        <div class="fw-semibold">Águia 01</div>
+                                                        <small class="text-muted">6 membros</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-primary">Resgate</span></td>
+                                            <td>Centro da Cidade</td>
+                                            <td><span class="status-badge active">Em Operação</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Comunicar">
+                                                    <span class="icon icon-phone"></span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Localizar">
+                                                    <span class="icon icon-location"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="team-info">
+                                                    <div class="team-avatar">M1</div>
+                                                    <div>
+                                                        <div class="fw-semibold">Saúde 01</div>
+                                                        <small class="text-muted">8 membros</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-success">Médica</span></td>
+                                            <td>Hospital Regional</td>
+                                            <td><span class="status-badge active">Em Operação</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Comunicar">
+                                                    <span class="icon icon-phone"></span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Localizar">
+                                                    <span class="icon icon-location"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="team-info">
+                                                    <div class="team-avatar">L1</div>
+                                                    <div>
+                                                        <div class="fw-semibold">Suprimentos 01</div>
+                                                        <small class="text-muted">4 membros</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-warning">Logística</span></td>
+                                            <td>Depósito Central</td>
+                                            <td><span class="status-badge idle">Em Preparação</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Comunicar">
+                                                    <span class="icon icon-phone"></span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Localizar">
+                                                    <span class="icon icon-location"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="team-info">
+                                                    <div class="team-avatar">I1</div>
+                                                    <div>
+                                                        <div class="fw-semibold">Construção 01</div>
+                                                        <small class="text-muted">12 membros</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-info">Infraestrutura</span></td>
+                                            <td>Ponte Principal</td>
+                                            <td><span class="status-badge warning">Recursos Limitados</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Comunicar">
+                                                    <span class="icon icon-phone"></span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Localizar">
+                                                    <span class="icon icon-location"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="team-info">
+                                                    <div class="team-avatar">R2</div>
+                                                    <div>
+                                                        <div class="fw-semibold">Águia 02</div>
+                                                        <small class="text-muted">5 membros</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-primary">Resgate</span></td>
+                                            <td>Bairro Esperança</td>
+                                            <td><span class="status-badge danger">Precisa Reforço</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Comunicar">
+                                                    <span class="icon icon-phone"></span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Localizar">
+                                                    <span class="icon icon-location"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-footer">
+                            <button class="btn btn-primary btn-sm">
+                                <span class="icon icon-plus"></span> Adicionar Equipe
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm">
+                                <span class="icon icon-sync"></span> Redistribuir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Alerts -->
+                <div class="col-lg-6">
+                    <div class="dashboard-card loading">
+                        <div class="dashboard-card-header">
+                            <h4><span class="icon icon-bell"></span>Alertas Recentes</h4>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <span class="icon icon-cog"></span> Gerenciar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-body">
+                            <div class="alert-timeline">
+                                <div class="alert-item critical">
+                                    <div class="alert-time">14:32</div>
+                                    <div class="alert-content">
+                                        <h5><span class="icon icon-critical"></span>Barragem em risco de rompimento</h5>
+                                        <p>Nível da água atingiu 95% da capacidade. Evacuação necessária nas próximas 2 horas para 5,000 pessoas.</p>
+                                        <div class="alert-actions">
+                                            <button class="btn btn-sm btn-danger">
+                                                <span>🏃</span> Evacuar
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary">Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert-item high">
+                                    <div class="alert-time">13:15</div>
+                                    <div class="alert-content">
+                                        <h5><span class="icon icon-medical"></span>Hospital com geradores críticos</h5>
+                                        <p>Combustível disponível para apenas 4 horas de operação. 850 pacientes em risco.</p>
+                                        <div class="alert-actions">
+                                            <button class="btn btn-sm btn-warning">
+                                                <span>🚛</span> Enviar Recursos
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary">Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert-item medium">
+                                    <div class="alert-time">11:47</div>
+                                    <div class="alert-content">
+                                        <h5><span>💧</span>Estoque de água crítico</h5>
+                                        <p>Abrigos no Bairro Esperança com menos de 24h de suprimentos para 2,100 pessoas.</p>
+                                        <div class="alert-actions">
+                                            <button class="btn btn-sm btn-info">
+                                                <span class="icon icon-sync"></span> Realocar
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary">Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert-item low">
+                                    <div class="alert-time">09:23</div>
+                                    <div class="alert-content">
+                                        <h5><span>🌧️</span>Previsão meteorológica</h5>
+                                        <p>Chuva intensa prevista nas próximas 12h. Possível agravamento em áreas afetadas.</p>
+                                        <div class="alert-actions">
+                                            <button class="btn btn-sm btn-success">
+                                                <span>👁️</span> Monitorar
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary">Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-footer text-center">
+                            <button class="btn btn-outline-primary btn-sm">
+                                <span>📋</span> Ver Todos os Alertas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Predictions Section -->
+            <div class="row g-4 mt-2">
+                <div class="col-12">
+                    <div class="dashboard-card loading">
+                        <div class="dashboard-card-header">
+                            <h4><span>🧠</span>Previsões de IA e Recomendações</h4>
+                            <div class="card-actions">
+                                <span class="badge bg-success me-2">
+                                    <span>🤖</span>IA Ativa
+                                </span>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <span class="icon icon-cog"></span>Configurar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-body">
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="dashboard-card" style="border: 2px solid #17a2b8;">
+                                        <div class="dashboard-card-body text-center">
+                                            <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+                                            <h5>Evolução do Desastre</h5>
+                                            <p class="text-muted">Previsão para próximas 24h</p>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-info" style="width: 70%"></div>
+                                            </div>
+                                            <small class="text-muted">70% probabilidade de agravamento</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="dashboard-card" style="border: 2px solid #ffc107;">
+                                        <div class="dashboard-card-body text-center">
+                                            <div style="font-size: 2rem; margin-bottom: 1rem;">👥</div>
+                                            <h5>Necessidades de Recursos</h5>
+                                            <p class="text-muted">Estimativa baseada em padrões</p>
+                                            <ul style="list-style: none; padding: 0; text-align: left;">
+                                                <li><span class="text-success">✅</span> +15 equipes médicas</li>
+                                                <li><span class="text-info">💧</span> +8,000L água potável</li>
+                                                <li><span class="text-warning">🍽️</span> +500 kits alimentação</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="dashboard-card" style="border: 2px solid #28a745;">
+                                        <div class="dashboard-card-body text-center">
+                                            <div style="font-size: 2rem; margin-bottom: 1rem;">🗺️</div>
+                                            <h5>Otimização de Rotas</h5>
+                                            <p class="text-muted">Sugestão automática</p>
+                                            <button class="btn btn-success btn-sm" style="width: 100%;">
+                                                <span>🪄</span> Aplicar Otimização
+                                            </button>
+                                            <small class="text-muted" style="display: block; margin-top: 0.5rem;">Redução de 23% no tempo</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

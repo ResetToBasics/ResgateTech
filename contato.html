@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - ResgateTech</title>
+    <link rel="stylesheet" href="css/contato.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shield-alt"></i>
+                ResgateTech
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mapa.html">Mapa Interativo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="contato.html">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Header -->
+    <header class="contact-header">
+        <div class="container text-center">
+            <div class="status-indicator mx-auto">
+                <div class="status-dot"></div>
+                <span>Central de Atendimento Online</span>
+            </div>
+            <h1 class="display-4">Entre em Contato</h1>
+            <p class="lead">Estamos aqui para responder suas dúvidas e receber sugestões sobre o ResgateTech. Nossa equipe está disponível 24/7 para emergências.</p>
+        </div>
+    </header>
+
+    <!-- Emergency Contact -->
+    <div class="container">
+        <div class="emergency-contact loading">
+            <h5><i class="fas fa-exclamation-triangle me-2"></i>Contato de Emergência</h5>
+            <p class="mb-3">Para situações de emergência que requerem ação imediata, entre em contato conosco através do nosso canal prioritário.</p>
+            <a href="tel:+5511999887766" class="btn">
+                <i class="fas fa-phone me-2"></i>
+                (11) 99988-7766 - Emergência 24h
+            </a>
+        </div>
+    </div>
+
+    <!-- Contact Content -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Form -->
+                <div class="col-lg-8">
+                    <div class="contact-form-card loading">
+                        <h3>
+                            <i class="fas fa-envelope"></i>
+                            Envie sua mensagem
+                        </h3>
+                        <form id="contactForm" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Nome completo *</label>
+                                    <input type="text" class="form-control" id="name" required placeholder="Seu nome completo">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe seu nome completo.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Perfeito!
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">E-mail *</label>
+                                    <input type="email" class="form-control" id="email" required placeholder="seu@email.com">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe um e-mail válido.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        E-mail válido!
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="(11) 99999-9999">
+                                    <div class="invalid-feedback">
+                                        Formato inválido. Use: (11) 99999-9999
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="organization" class="form-label">Organização</label>
+                                    <input type="text" class="form-control" id="organization" placeholder="Nome da sua organização">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="subject" class="form-label">Assunto *</label>
+                                    <select class="form-select" id="subject" required>
+                                        <option value="" disabled selected>Selecione um assunto</option>
+                                        <option value="info">Informações sobre o sistema</option>
+                                        <option value="demo">Solicitação de demonstração</option>
+                                        <option value="partnership">Proposta de parceria</option>
+                                        <option value="feedback">Feedback sobre o sistema</option>
+                                        <option value="support">Suporte técnico</option>
+                                        <option value="training">Treinamento e capacitação</option>
+                                        <option value="pricing">Informações sobre preços</option>
+                                        <option value="integration">Integração com sistemas existentes</option>
+                                        <option value="other">Outro assunto</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione um assunto.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="urgency" class="form-label">Nível de urgência</label>
+                                    <select class="form-select" id="urgency">
+                                        <option value="low" selected>Baixa - Resposta em 48h</option>
+                                        <option value="medium">Média - Resposta em 24h</option>
+                                        <option value="high">Alta - Resposta em 4h</option>
+                                        <option value="critical">Crítica - Resposta imediata</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Mensagem *</label>
+                                    <textarea class="form-control" id="message" rows="6" required placeholder="Descreva detalhadamente sua dúvida, sugestão ou necessidade..."></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor, escreva sua mensagem.
+                                    </div>
+                                    <div class="form-text">Mínimo de 20 caracteres. Seja específico para recebermos uma resposta mais precisa.</div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter" checked>
+                                        <label class="form-check-label" for="newsletter">
+                                            Desejo receber atualizações sobre o ResgateTech e conteúdos sobre gestão de emergências
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="privacy" required>
+                                        <label class="form-check-label" for="privacy">
+                                            Concordo com os <a href="#" class="text-primary">termos de privacidade</a> e autorizo o uso dos meus dados para resposta *
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            Você deve concordar com os termos de privacidade.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary me-3" id="submitBtn">
+                                        <i class="fas fa-paper-plane me-2"></i>
+                                        Enviar Mensagem
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-secondary" id="resetBtn">
+                                        <i class="fas fa-undo me-2"></i>
+                                        Limpar Formulário
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Success/Error Messages -->
+                        <div class="alert alert-success mt-4 d-none" id="successMessage">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle me-3 fs-4"></i>
+                                <div>
+                                    <strong>Mensagem enviada com sucesso!</strong><br>
+                                    Recebemos sua mensagem e entraremos em contato em breve. Você receberá uma confirmação por e-mail.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-danger mt-4 d-none" id="errorMessage">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-exclamation-triangle me-3 fs-4"></i>
+                                <div>
+                                    <strong>Erro ao enviar mensagem!</strong><br>
+                                    Ocorreu um problema. Tente novamente ou entre em contato através do telefone.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info Sidebar -->
+                <div class="col-lg-4">
+                    <div class="contact-info-card loading">
+                        <h3><i class="fas fa-info-circle me-2"></i>Informações de Contato</h3>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Sede Principal</h5>
+                                <p>Av. Paulista, 1106<br>Bela Vista - São Paulo, SP<br>CEP: 01310-100</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>Telefones</h5>
+                                <p>
+                                    <strong>Comercial:</strong> (11) 5555-5555<br>
+                                    <strong>Suporte:</strong> (11) 5555-5556<br>
+                                    <strong>Emergência:</strong> (11) 99988-7766
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>E-mails</h5>
+                                <p>
+                                    <strong>Geral:</strong> contato@resgatetech.com.br<br>
+                                    <strong>Suporte:</strong> suporte@resgatetech.com.br<br>
+                                    <strong>Comercial:</strong> vendas@resgatetech.com.br
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Horários de Atendimento</h5>
+                                <p>
+                                    <strong>Segunda a Sexta:</strong> 8h às 18h<br>
+                                    <strong>Sábados:</strong> 9h às 13h<br>
+                                    <strong>Emergências:</strong> 24 horas, 7 dias
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div>
+                                <h5>Suporte Técnico</h5>
+                                <p>
+                                    Chat online disponível 24h<br>
+                                    Base de conhecimento completa<br>
+                                    Treinamentos e tutoriais
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-media">
+                            <h5>Siga-nos nas Redes Sociais</h5>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-icon" title="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon" title="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="social-icon" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Section -->
+                    <div class="faq-card loading">
+                        <h4><i class="fas fa-question-circle"></i>Perguntas Frequentes</h4>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-target="#collapseOne">
+                                        Como o ResgateTech funciona?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        O ResgateTech é um sistema inteligente que integra dados de diversas fontes (sensores IoT, satélites, equipes em campo) para otimizar a gestão de recursos durante desastres naturais. Utilizamos algoritmos de IA para análise preditiva e tomada de decisões em tempo real.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-target="#collapseTwo">
+                                        Quem pode utilizar o sistema?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        O sistema foi projetado para uso por órgãos de defesa civil, equipes de resgate, gestores públicos, ONGs humanitárias e organizações envolvidas na resposta a desastres. Oferecemos diferentes níveis de acesso conforme as necessidades específicas de cada usuário.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-target="#collapseThree">
+                                        Como implementar o ResgateTech?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        O processo de implementação inclui: (1) Análise das necessidades específicas, (2) Configuração e customização do sistema, (3) Integração com sistemas existentes, (4) Treinamento da equipe, (5) Suporte contínuo. O tempo de implementação varia de 2 a 8 semanas.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-target="#collapseFour">
+                                        Qual o custo do sistema?
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Oferecemos diferentes planos adaptados ao tamanho e necessidades da organização. Os valores incluem licenciamento, implementação, treinamento e suporte. Entre em contato para receber uma proposta personalizada baseada em suas necessidades específicas.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-target="#collapseFive">
+                                        O sistema funciona offline?
+                                    </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Sim! O ResgateTech possui modo offline robusto que mantém funcionalidades críticas mesmo sem conexão à internet. Os dados são sincronizados automaticamente quando a conectividade é restaurada, garantindo continuidade operacional em qualquer situação.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="location-map loading">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.3976607916953!2d-46.65562792392136!3d-23.55583056073572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c7f481fd9f%3A0x9982d6f276b8fc!2sAv.%20Paulista%2C%201106%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001310-100!5e0!3m2!1spt-BR!2sbr!4v1684866545427!5m2!1spt-BR!2sbr" 
+                            width="100%" 
+                            height="450" 
+                            allowfullscreen 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Localização da ResgateTech">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-shield-alt text-primary me-2 fs-3"></i>
+                        <h5 class="mb-0">ResgateTech</h5>
+                    </div>
+                    <p class="mb-3">Sistema Inteligente de Gestão de Recursos em Desastres - Salvando vidas através da tecnologia e inovação. Nossa missão é tornar a resposta a emergências mais eficiente e coordenada.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 mb-4">
+                    <h5>Navegação</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">Início</a></li>
+                        <li class="mb-2"><a href="dashboard.html">Dashboard</a></li>
+                        <li class="mb-2"><a href="mapa.html">Mapa</a></li>
+                        <li class="mb-2"><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 mb-4">
+                    <h5>Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Documentação</a></li>
+                        <li class="mb-2"><a href="#">API</a></li>
+                        <li class="mb-2"><a href="#">Suporte</a></li>
+                        <li class="mb-2"><a href="#">Treinamento</a></li>
+                        <li class="mb-2"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 mb-4">
+                    <h5>Empresa</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Sobre Nós</a></li>
+                        <li class="mb-2"><a href="#">Equipe</a></li>
+                        <li class="mb-2"><a href="#">Carreiras</a></li>
+                        <li class="mb-2"><a href="#">Parcerias</a></li>
+                        <li class="mb-2"><a href="#">Imprensa</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 mb-4">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Privacidade</a></li>
+                        <li class="mb-2"><a href="#">Termos de Uso</a></li>
+                        <li class="mb-2"><a href="#">Cookies</a></li>
+                        <li class="mb-2"><a href="#">LGPD</a></li>
+                        <li class="mb-2"><a href="#">Segurança</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 small">© 2024 ResgateTech. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 small">
+                        <span class="me-3">Desenvolvido com <i class="fas fa-heart text-danger"></i> no Brasil</span>
+                        <span>Versão 2.1.0</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/contato.js"></script>
+</body>
+</html>

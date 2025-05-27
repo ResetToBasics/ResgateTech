@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResgateTech - Sistema Inteligente de Gestão de Recursos em Desastres</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shield-alt"></i>
+                ResgateTech
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mapa.html">Mapa Interativo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contato.html">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="loading">Transformando a resposta a desastres com tecnologia inteligente</h1>
+                    <p class="lead loading">O ResgateTech é um sistema inteligente que otimiza a gestão e distribuição de recursos durante situações de emergência, salvando vidas e reduzindo danos através de IA avançada e análise de dados em tempo real.</p>
+                    <div class="d-flex flex-wrap gap-3 loading">
+                        <a href="dashboard.html" class="btn-hero btn-hero-primary">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Ver Dashboard
+                        </a>
+                        <a href="mapa.html" class="btn-hero btn-hero-outline">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Mapa Interativo
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image floating loading">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&h=400&fit=crop&crop=center" alt="Equipe de resgate em ação" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item loading">
+                        <span class="stat-number" data-count="50000">0</span>
+                        <div class="stat-label">Vidas Impactadas</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item loading">
+                        <span class="stat-number" data-count="95">0</span>
+                        <div class="stat-label">% Eficiência</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item loading">
+                        <span class="stat-number" data-count="24">0</span>
+                        <div class="stat-label">Horas de Operação</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item loading">
+                        <span class="stat-number" data-count="200">0</span>
+                        <div class="stat-label">Equipes Conectadas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-5" id="problema">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title loading">O Problema</h2>
+                    <div class="section-divider loading"></div>
+                    <p class="lead loading">Durante desastres naturais, a coordenação eficaz pode ser a diferença entre vida e morte</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 loading">
+                        <div class="card-body text-center">
+                            <div class="icon-box mb-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="card-title h5">Tempo é Crítico</h3>
+                            <p class="card-text">Durante desastres naturais, cada minuto conta. Atrasos na resposta podem custar vidas e aumentar exponencialmente os danos materiais e humanos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 loading">
+                        <div class="card-body text-center">
+                            <div class="icon-box mb-4">
+                                <i class="fas fa-random"></i>
+                            </div>
+                            <h3 class="card-title h5">Coordenação Fragmentada</h3>
+                            <p class="card-text">A falta de coordenação entre equipes de resgate, voluntários e recursos disponíveis reduz drasticamente a eficiência da resposta emergencial.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 loading">
+                        <div class="card-body text-center">
+                            <div class="icon-box mb-4">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3 class="card-title h5">Informação Dispersa</h3>
+                            <p class="card-text">Dados cruciais ficam fragmentados entre diferentes agências e sistemas, dificultando decisões rápidas e estratégicas durante emergências.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-5 bg-light" id="solucao">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title loading">Nossa Solução</h2>
+                    <div class="section-divider loading"></div>
+                    <p class="lead loading">O ResgateTech integra tecnologias avançadas para criar um sistema completo de gestão de recursos em desastres.</p>
+                </div>
+            </div>
+
+            <!-- Dashboard Feature -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6 loading">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center" alt="Dashboard do sistema" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6 loading">
+                    <h3 class="mb-3">Dashboard Inteligente em Tempo Real</h3>
+                    <p class="mb-4">Visualize todos os recursos disponíveis, equipes em campo e áreas afetadas em um único painel intuitivo atualizado em tempo real com algoritmos de IA.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle text-success"></i> Monitoramento de equipes e recursos em tempo real</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Priorização automática de áreas críticas com IA</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Análise preditiva de necessidades futuras</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Alertas inteligentes e notificações push</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Map Feature -->
+            <div class="row align-items-center mb-5 flex-md-row-reverse">
+                <div class="col-md-6 loading">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop&crop=center" alt="Mapa interativo" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6 loading">
+                    <h3 class="mb-3">Mapeamento Geoespacial Avançado</h3>
+                    <p class="mb-4">Visualize geograficamente todas as informações relevantes, desde áreas afetadas até a localização precisa de recursos e equipes em campo.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle text-success"></i> Rotas otimizadas com algoritmos avançados</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Identificação de zonas de risco em tempo real</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Integração com dados de satélite e sensores IoT</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Camadas personalizáveis e análise geoespacial</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AI Feature -->
+            <div class="row align-items-center">
+                <div class="col-md-6 loading">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=center" alt="Sistema de IA" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6 loading">
+                    <h3 class="mb-3">Inteligência Artificial para Tomada de Decisão</h3>
+                    <p class="mb-4">Algoritmos de machine learning que analisam dados em tempo real para sugerir a melhor alocação de recursos e priorização de áreas críticas.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle text-success"></i> Previsão de necessidades com 95% de precisão</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Otimização automática de recursos limitados</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Aprendizado contínuo com cada operação</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Análise de padrões e tendências históricas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section py-5">
+        <div class="container text-center">
+            <div class="cta-content">
+                <h2 class="mb-4 loading">Pronto para transformar a gestão de emergências?</h2>
+                <p class="lead mb-4 loading">Explore nosso sistema e descubra como a tecnologia pode salvar vidas e otimizar recursos durante desastres naturais.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3 loading">
+                    <a href="dashboard.html" class="btn-hero btn-hero-primary">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Ver Dashboard
+                    </a>
+                    <a href="contato.html" class="btn-hero btn-hero-outline">
+                        <i class="fas fa-envelope"></i>
+                        Entre em Contato
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-shield-alt text-primary me-2 fs-3"></i>
+                        <h5 class="mb-0">ResgateTech</h5>
+                    </div>
+                    <p class="mb-3">Sistema Inteligente de Gestão de Recursos em Desastres - Salvando vidas através da tecnologia e inovação.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 mb-4">
+                    <h5>Navegação</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home">Início</a></li>
+                        <li class="mb-2"><a href="#problema">Problema</a></li>
+                        <li class="mb-2"><a href="#solucao">Solução</a></li>
+                        <li class="mb-2"><a href="dashboard.html">Dashboard</a></li>
+                        <li class="mb-2"><a href="mapa.html">Mapa</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 mb-4">
+                    <h5>Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Documentação</a></li>
+                        <li class="mb-2"><a href="#">API</a></li>
+                        <li class="mb-2"><a href="#">Suporte</a></li>
+                        <li class="mb-2"><a href="#">Treinamento</a></li>
+                        <li class="mb-2"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>Contato</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            contato@resgatetech.com.br
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            (11) 5555-5555
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Av. Paulista, 1106 - São Paulo, SP
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock me-2"></i>
+                            24/7 Suporte de Emergência
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 small">© 2024 ResgateTech. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 small">
+                        <a href="#" class="me-3">Política de Privacidade</a>
+                        <a href="#" class="me-3">Termos de Uso</a>
+                        <a href="#">Cookies</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
