@@ -72,18 +72,4 @@ O ResgateTech integra tecnologias avançadas para criar um sistema completo de g
 
 4. Acesse `http://localhost:8000` em seu navegador
 
-## 👥 Equipe
 
-- [Nome do Integrante 1] - RM [Número]
-- [Nome do Integrante 2] - RM [Número]
-- [Nome do Integrante 3] - RM [Número]
-- [Nome do Integrante 4] - RM [Número]
-- [Nome do Integrante 5] - RM [Número]
-
-## 📝 Licença
-
-Este projeto foi desenvolvido para fins educacionais como parte do projeto Global Solution da FIAP.
-
-## 🎬 Vídeo Pitch
-
-Confira nosso vídeo pitch: [Link para o vídeo](URL_DO_SEU_VIDEO) 
